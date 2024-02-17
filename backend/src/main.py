@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from src.config.manager import settings
 
 backend_app = FastAPI()
 
@@ -6,10 +7,4 @@ backend_app = FastAPI()
 def read_root():
     return {"Hello": "form docker compose"}
 
-''' 
-curl -X 'GET' \
-  'http://localhost:8000/' \
-  -H 'accept: application/json'\
-  -H 'Content-Type: application/json'
-'''
-# curl -X 'GET' 'http://localhost:8000/' -H 'Content-Type: application/json' -d ''
+print(settings) 
