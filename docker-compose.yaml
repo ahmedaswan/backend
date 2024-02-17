@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: db
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: test
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgresql_db_data:/var/lib/postgresql/data
+    
+
+  backend_app:
+    container_name: backend_app
+    restart: always
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/user/backend
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
