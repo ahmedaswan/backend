@@ -7,7 +7,7 @@ import pydantic
 from pydantic_settings import BaseSettings
 
 ROOT_DIR: pathlib.Path = pathlib.Path(__file__).parent.parent.parent.parent.parent.resolve()
-print(ROOT_DIR)
+
 class BackendBaseSetting(BaseSettings):
     TITLE: str = "Backend FastAPI Application"
     VERSION: str = "0.1.0"
@@ -38,6 +38,11 @@ class BackendBaseSetting(BaseSettings):
     IS_DB_ECHO_LOG: bool = decouple.config("IS_DB_ECHO_LOG", cast=bool)  # type: ignore
     IS_DB_FORCE_ROLLBACK: bool = decouple.config("IS_DB_FORCE_ROLLBACK", cast=bool)  # type: ignore
     IS_DB_EXPIRE_ON_COMMIT: bool = decouple.config("IS_DB_EXPIRE_ON_COMMIT", cast=bool)  # type: ignore
+
+    HASHING_ALGORITHM_LAYER_1: str = decouple.config("HASHING_ALGORITHM_LAYER_1", cast=str)  # type: ignore
+    HASHING_ALGORITHM_LAYER_2: str = decouple.config("HASHING_ALGORITHM_LAYER_2", cast=str)  # type: ignore
+    HASHING_SALT: str = decouple.config("HASHING_SALT", cast=str)  # type: ignore
+    JWT_ALGORITHM: str = decouple.config("JWT_ALGORITHM", cast=str)  # type: ignore
 
 
     LOGGING_LEVEL: int = logging.INFO

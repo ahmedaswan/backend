@@ -1,9 +1,2 @@
-import typing
-
-import sqlalchemy
-from sqlalchemy.orm import DeclarativeBase
-
-class DBTable(DeclarativeBase):
-    metadata: sqlalchemy.MetaData = sqlalchemy.MetaData()
-
-Base: typing.Type[DeclarativeBase] = DBTable
+from src.models.db.account import Account
+from src.repository.table import Base
